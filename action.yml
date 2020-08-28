@@ -1,0 +1,33 @@
+name: 'Publish to TYPO3 extension repository'
+author: Mittwald CM Service GmbH & Co. KG
+description: |
+  This action publishes a TYPO3 extension into the TYPO3 Extension Repository (TER).
+inputs:
+  extension-key:
+    description: 'Extension key of the extension to publish'
+    required: true
+  extension-dir:
+    description: 'Directory which contains the extension to be published'
+    required: false
+    default: '.'
+  ter-username:
+    description: 'Your TER username'
+    required: true
+  ter-password:
+    description: 'Your TER password'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ extension-dir }}
+    - ${{ extension-key }}
+  env:
+    TER_USERNAME: ${{ inputs.ter-username }}
+    TER_PASSWORD: ${{ inputs.ter-password }}
+branding:
+  icon: share
+  color: blue
