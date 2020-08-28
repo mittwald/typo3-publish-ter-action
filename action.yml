@@ -23,8 +23,8 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ extension-dir }}
-    - ${{ extension-key }}
+    - ${{ inputs.extension-dir }}
+    - ${{ inputs.extension-key }}
   env:
     TER_USERNAME: ${{ inputs.ter-username }}
     TER_PASSWORD: ${{ inputs.ter-password }}
