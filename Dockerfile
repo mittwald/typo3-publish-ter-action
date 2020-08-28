@@ -11,6 +11,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN apk add -U git
 RUN composer -n global require --dev helhum/ter-client ${TERCLIENT_VERSION}
 
+RUN apk add -U libxml2-dev
+RUN docker-php-ext-install soap
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
